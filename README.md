@@ -2,7 +2,7 @@
 
 ## Overview
 
-This method identifies safety-sensitive layers within the LLM and leverages data representa tions to detect safety-degrading data samples in the fine-tuning dataset.
+This method identifies safety-sensitive layers within the LLM and leverages data bi-representation to detect safety-degrading data samples in the fine-tuning dataset.
 
 ## Installation
 
