@@ -2,12 +2,13 @@
 
 ## Overview
 
+This method identifies safety-sensitive layers within the LLM and leverages data representa tions to detect safety-degrading data samples in the fine-tuning dataset.
 
 ## Installation
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-repo/LARF.git
+    git clone https://github.com/LLLeoLi/LARF.git
     cd LARF
     ```
 
