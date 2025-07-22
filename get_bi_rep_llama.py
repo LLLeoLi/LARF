@@ -4,8 +4,10 @@ import torch
 import argparse
 import numpy as np
 from tqdm import tqdm
+import torch.nn.functional as F
 from sklearn.metrics.pairwise import cosine_similarity
 from transformers import AutoModelForCausalLM, AutoTokenizer
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--layer_num_start', type=int, default=14)
 parser.add_argument('--layer_num_end', type=int, default=15)
@@ -84,9 +86,9 @@ def top_cosine_similarity(A, B, C):
     rankings = np.argsort(scores)[::-1]
     return rankings, scores[rankings]
 
-unsafe_rep = torch.stack([safety_data_process(data) for data in tqdm(unsafe_data, desc = 'unsafe_datas')])
+unsafe_rep = F.normalize(torch.stack([safety_data_process(data) for data in tqdm(unsafe_data, desc = 'unsafe_datas')]))
 
-safe_rep = torch.stack([safety_data_process(data) for data in tqdm(safe_data, desc = 'safe_datas')])
+safe_rep = F.normalize(torch.stack([safety_data_process(data) for data in tqdm(safe_data, desc = 'safe_datas')]))
 
 target_rep = torch.stack([alpaca_data_process(data) for data in tqdm(target_data , desc=f'target_datas:{file_name}')])
 
